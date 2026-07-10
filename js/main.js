@@ -39,6 +39,29 @@ filterBtns.forEach(btn => {
   });
 });
 
+// Hero background slideshow
+const heroBg = document.querySelector('.hero-bg');
+if (heroBg) {
+  const images = [
+    'images/properties/property-1.jpg',
+    'images/properties/property-2.jpg',
+    'images/properties/property-3.jpg',
+    'images/properties/property-4.jpg',
+    'images/properties/property-5.jpg',
+    'images/properties/property-6.jpg'
+  ];
+  let i = 0;
+  heroBg.style.backgroundImage = `url(${images[0]})`;
+  setInterval(() => {
+    i = (i + 1) % images.length;
+    heroBg.style.opacity = '0';
+    setTimeout(() => {
+      heroBg.style.backgroundImage = `url(${images[i]})`;
+      heroBg.style.opacity = '1';
+    }, 1000);
+  }, 5000);
+}
+
 // Header scroll effect
 const header = document.querySelector('.header');
 if (header) {

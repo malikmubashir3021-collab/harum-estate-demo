@@ -247,6 +247,9 @@ img { max-width: 100%; height: auto; }
 .hero-bg {
   position: absolute;
   inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1s ease-in-out;
 }
 .hero-overlay {
   position: absolute;
@@ -1139,7 +1142,7 @@ img { max-width: 100%; height: auto; }
   .nav a { font-size: 1rem; }
   .menu-toggle { display: block; }
   .header-actions .btn span { display: none; }
-  .hero { padding-top: 0; min-height: 92vh; }
+  .hero { padding-top: 0; min-height: 70vh; }
   .hero .container { padding-top: 130px; }
   .hero-content { text-align: center; margin: 0 auto; }
   .hero-content h1 { font-size: 2rem; }
@@ -1167,7 +1170,7 @@ img { max-width: 100%; height: auto; }
 
 @media (max-width: 480px) {
   .team-grid { grid-template-columns: 1fr; }
-  .hero { min-height: 90vh; }
+  .hero { min-height: 80vh; }
   .hero .container { padding-top: 110px; }
   .hero-content h1 { font-size: 1.7rem; }
   .hero-content p { font-size: 0.92rem; }
