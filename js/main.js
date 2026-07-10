@@ -39,27 +39,43 @@ filterBtns.forEach(btn => {
   });
 });
 
-// Hero background slideshow
-const heroBg = document.querySelector('.hero-bg');
-if (heroBg) {
-  const images = [
-    'images/properties/property-1.jpg',
-    'images/properties/property-2.jpg',
-    'images/properties/property-3.jpg',
-    'images/properties/property-4.jpg',
-    'images/properties/property-5.jpg',
-    'images/properties/property-6.jpg'
-  ];
-  let i = 0;
-  heroBg.style.backgroundImage = `url(${images[0]})`;
-  setInterval(() => {
-    i = (i + 1) % images.length;
-    heroBg.style.opacity = '0';
-    setTimeout(() => {
-      heroBg.style.backgroundImage = `url(${images[i]})`;
-      heroBg.style.opacity = '1';
-    }, 1000);
-  }, 5000);
+// Hero property card slideshow
+const heroSlides = document.querySelectorAll('.hero-slide');
+const dotsContainer = document.querySelector('.hero-slide-dots');
+const slideCounter = document.getElementById('slideCounter');
+
+if (heroSlides.length && dotsContainer) {
+  let current = 0;
+
+  // Generate dots
+  heroSlides.forEach((_, idx) => {
+    const dot = document.createElement('button');
+    dot.className = 'dot' + (idx === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Go to slide ${idx + 1}`);
+    dot.addEventListener('click', () => goTo(idx));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll('.dot');
+
+  function goTo(idx) {
+    heroSlides.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+    heroSlides[idx].classList.add('active');
+    dots[idx].classList.add('active');
+    if (slideCounter) slideCounter.textContent = idx + 1;
+    current = idx;
+  }
+
+  function nextSlide() {
+    goTo((current + 1) % heroSlides.length);
+  }
+
+  let interval = setInterval(nextSlide, 5000);
+
+  // Pause on hover
+  document.querySelector('.hero-card')?.addEventListener('mouseenter', () => clearInterval(interval));
+  document.querySelector('.hero-card')?.addEventListener('mouseleave', () => { interval = setInterval(nextSlide, 5000); });
 }
 
 // Header scroll effect
