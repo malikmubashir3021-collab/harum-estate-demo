@@ -99,7 +99,7 @@ if (contactForm) {
     const phone = this.querySelector('input[type="tel"]').value;
     const msgEl = this.querySelector('textarea');
     const message = msgEl ? msgEl.value : '';
-    const whatsappMsg = `*New Inquiry from Harum Estate Website*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Message:* ${message}`;
+    const whatsappMsg = `*New Inquiry from Haram Estate Website*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Message:* ${message}`;
     window.open(`https://wa.me/923214045556?text=${whatsappMsg}`, '_blank');
   });
 }
